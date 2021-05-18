@@ -99,13 +99,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://65.0.87.121:9980/vineel/repository/wallmart-release/</url>
+	      <url>http://13.232.47.160:9980/vineel/repository/wallmart-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://65.0.87.121:9980/vineel/repository/wallmart-shapshot/</url>
+	      <url>http://13.232.47.160:9980/vineel/repository/wallmart-shapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
