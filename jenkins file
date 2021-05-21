@@ -1,0 +1,39 @@
+node
+{
+
+def mavenHome = tool name: "maven3.8.1"
+properties([[$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
+
+stage('checkoutCode')
+{
+git branch: 'development', credentialsId: '3fd35f49-0f05-4905-b7ee-1258c539d518', url: 'https://github.com/vineesn/maven-web-application.git'
+}
+
+stage('build')
+{
+sh "${mavenHome}/bin/mvn clean package"
+}
+/*
+stage('Executesonarquberepot')
+{
+sh "${mavenHome}/bin/mvn sonar:sonar"
+}
+
+stage('uploadartifactsintonexus')
+{
+sh "${mavenHome}/bin/mvn deploy"
+}
+stage('deploytotomcat')
+{
+sshagent(['6b734faa-b25b-41c1-bb05-fd6e52073e10']) {
+sh "scp -o StrictHostKeyChecking=no  target/maven-web-application.war ec2-user@13.126.59.92:/opt/apache-tomcat-9.0.45/webapps/"
+}
+}
+*/
+stage('sendemailnotifaction')
+{
+emailext body: '''build over 
+
+svineel devops''', subject: 'buildover..', to: 'vineelsn123@gmail.com'
+}
+}
